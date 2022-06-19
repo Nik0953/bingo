@@ -262,8 +262,8 @@ class Chips:
     бочонки
     """
 
-    def __init__(self):
-        self.id = None         # допустимо от 1 до 90 включительно
+    def __init__(self, id):
+        self.id = id         # допустимо от 1 до 90 включительно
         self.status = 'wait'   # 'wait' == лежит в мешке;
                                # 'on_board' == на столе;
                                # 'out' == отыгран
