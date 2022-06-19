@@ -4,15 +4,19 @@ from random import randint
 Описание объектов для игры в Лото
 """
 
-def yes_or_no():
+
+def yes_or_no(txt=''):
     """
     функция добивается ответа пользователя либо да, либо нет.
     :return: True, если 'да';  False, если 'нет'
     """
-    answer = 'waiting for an answer'
+    if len(txt):
+        answer = txt.lower().strip()
+    else:
+        answer = 'waiting for an answer'
 
     while answer != 'да' and answer != 'нет':
-        answer = input('\'да\' или \'нет\'? ').lower().strip()
+            answer = input('\'да\' или \'нет\'? ').lower().strip()
 
     yes_answer = True if answer == 'да' else False
 
@@ -148,7 +152,7 @@ class Player:
 
     def __init__(self):
         self.id = None            # id игрока
-        self.name = None          # имя игрока
+        self.name = None         # имя игрока
         self.status = 'in_game'   # 'in_game' - в игре
                                   # 'win' - выиграл
                                   # 'lost' - проиграл
@@ -191,14 +195,10 @@ class Player:
         return txt
 
 
-
 class HumanPlayer(Player):
     """
     игрок - человек
     """
-
-    # def __init__(self):
-    #     self.brain = 'HI'  # 'HI' == Human Intelegence
 
     def move(self, boch):
         """
@@ -223,7 +223,6 @@ class HumanPlayer(Player):
         if correct_answer and included:
             self.card.cross_out(boch.id)
             self.card.all_digs = self.card.all_digs - {boch.id}
-
 
         if not correct_answer:
             self.status = 'lost'
@@ -267,6 +266,3 @@ class Chips:
         self.status = 'wait'   # 'wait' == лежит в мешке;
                                # 'on_board' == на столе;
                                # 'out' == отыгран
-
-
-

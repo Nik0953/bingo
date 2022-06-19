@@ -37,6 +37,7 @@ while player_name:
     print('Это человек?')
     yes_answer = yes_or_no()
 
+
     # инициализируем игрока - человека
     if yes_answer:
         g_p = HumanPlayer()
