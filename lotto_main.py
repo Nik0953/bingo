@@ -18,8 +18,7 @@ chips_wait = []
 chips_used =[]
 
 for chips_counter in range(min_chip_int, max_chip_int + 1):
-    chip = Chips()
-    chip.id = chips_counter
+    chip = Chips(chips_counter)
     chips_wait.append(chip)
 
 
@@ -37,6 +36,7 @@ while player_name:
 
     print('Это человек?')
     yes_answer = yes_or_no()
+
 
     # инициализируем игрока - человека
     if yes_answer:
