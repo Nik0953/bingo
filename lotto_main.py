@@ -13,14 +13,14 @@ min_chip_int = 1        # самое маленькое число на бочо
 max_chip_int = 90       # самое большое число на бочонке 'chip'
 
 # список всех бочонков, которые еще не достали из мешка
-chips_wait = []
+chips_wait = Chips.create_chips(min_chip_int, max_chip_int)
+
 # список отыгранных бочонков
 chips_used =[]
 
-for chips_counter in range(min_chip_int, max_chip_int + 1):
-    chip = Chips()
-    chip.id = chips_counter
-    chips_wait.append(chip)
+# for chips_counter in range(min_chip_int, max_chip_int + 1):
+#     chip = Chips(chips_counter)
+#     chips_wait.append(chip)
 
 
 # инициализируем всех игроков
@@ -37,6 +37,7 @@ while player_name:
 
     print('Это человек?')
     yes_answer = yes_or_no()
+
 
     # инициализируем игрока - человека
     if yes_answer:
@@ -58,7 +59,7 @@ while player_name:
 print('Всего игроков:', len(game_players))
 
 for player in game_players:
-    print(player.txt_info())
+    print(player)
 
 print('*'*64)
 print(' *******  Начинаем игру:   *******')
@@ -92,7 +93,7 @@ while len(chips_wait) and not game_stop and players_in_game_count:
                 player.status = 'win'
                 game_stop = True
             print('Обновленное состояние:')
-            print(player.txt_info())
+            print(player)
 
     # переложим бочонок в использованные
     chip_on_board.status = 'used'
